@@ -11,8 +11,8 @@
   <!-- Runtime env: set window.__env.API_URL to override backend URL in production -->
   <script>
     window.__env = window.__env || {};
-    // change this value during deployment (or inject a small env.js before index.html)
-    window.__env.API_URL = window.__env.API_URL || 'http://localhost:5000';
+    // En producción, usar API Gateway de AWS
+    window.__env.API_URL = window.__env.API_URL || 'https://785cszwrs2.execute-api.us-east-2.amazonaws.com/api';
   </script>
   <app-root></app-root>
 </body>
