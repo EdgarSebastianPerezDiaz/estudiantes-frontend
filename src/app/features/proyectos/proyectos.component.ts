@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ProyectosService } from '../../core/services/proyectos.service';
+import { ProyectosService } from '../../shared/services/proyectos.service';
 import { Proyecto, ProyectoCardComponent } from './proyecto-card.component';
-import { AuthService } from '../../core/services/auth.service';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-proyectos',

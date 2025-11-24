@@ -1,9 +1,8 @@
-// src/app/features/auth/login/login.component.ts
 
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../../core/services/auth.service';
+import { AuthService } from '../../shared/services/auth.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

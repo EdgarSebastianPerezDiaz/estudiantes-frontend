@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProyectosService } from '../../core/services/proyectos.service';
+import { ProyectosService } from '../../shared/services/proyectos.service';
 
 @Component({
   selector: 'app-admin',

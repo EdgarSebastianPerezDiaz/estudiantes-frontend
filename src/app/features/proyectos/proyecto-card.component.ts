@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProyectosService } from '../../core/services/proyectos.service';
+import { ProyectosService } from '../../shared/services/proyectos.service';
 
 export interface Proyecto {
   id: string;
