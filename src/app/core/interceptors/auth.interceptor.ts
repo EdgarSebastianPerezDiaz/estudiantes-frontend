@@ -5,9 +5,6 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // localStorage is not available during server-side rendering (SSR).
-    // Guard access to avoid "localStorage is not defined" errors when the
-    // dev server performs server-side rendering paths (or when running SSR).
     let token: string | null = null;
     try {
       if (typeof window !== 'undefined' && window.localStorage) {
