@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of, delay } from 'rxjs';
 import { BASE_API_URL } from '../../core/config/api.config';
 
 export interface Proyecto {
@@ -37,5 +37,44 @@ export class ProyectosService {
 
   descargarProyecto(id: number | string): Observable<Blob> {
     return this.http.post(`${BASE_API_URL}/proyectos/${id}/download`, {}, { responseType: 'blob' });
+  }
+
+  // Listar proyectos pendientes (admin)
+  pendientes(): Observable<Proyecto[]> {
+    // Reemplaza con llamada real si tienes endpoint, aquí simulado:
+    return this.http.get<Proyecto[]>(`${BASE_API_URL}/admin/proyectos-pendientes`);
+  }
+
+  // Aprobar proyecto (admin)
+  aprobar(id: string): Observable<any> {
+    // Reemplaza con llamada real si tienes endpoint, aquí simulado:
+    return this.http.put(`${BASE_API_URL}/admin/proyectos/${id}/estado`, { estado: 'aprobado' });
+  }
+
+  // Rechazar proyecto (admin)
+  rechazar(id: string): Observable<any> {
+    // Reemplaza con llamada real si tienes endpoint, aquí simulado:
+    return this.http.put(`${BASE_API_URL}/admin/proyectos/${id}/estado`, { estado: 'rechazado' });
+  }
+
+  // Registrar descarga
+  registrarDescarga(id: string): Observable<any> {
+    return this.http.post(`${BASE_API_URL}/proyectos/${id}/download`, {});
+  }
+
+  // Listar proyectos (simulado para fallback)
+  listar(): Observable<Proyecto[]> {
+    return this.getProyectos();
+  }
+
+  // Listar semilla (simulado para fallback)
+  listarSeed(): Observable<{ proyectos: Proyecto[]; materias: any[] }> {
+    // Simulación, reemplaza con endpoint real si existe
+    return of({ proyectos: [], materias: [] }).pipe(delay(100));
+  }
+
+  // Crear proyecto (simulado para fallback)
+  crear(body: Partial<Proyecto>): Observable<Proyecto> {
+    return this.crearProyecto(body);
   }
 }
