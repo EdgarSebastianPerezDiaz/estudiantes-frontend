@@ -106,9 +106,16 @@ export class LoginComponent {
       this.loading = true;
       this.registerError = '';
       this.authService.register({ nombre, email, password }).subscribe({
-        next: () => {
-          this.registerError = 'Registro exitoso, ya puedes iniciar sesión';
-          this.showRegister = false;
+        next: (res: any) => {
+          // Guarda el token si lo devuelve el backend
+          const token = res?.access_token || res?.token;
+          if (token) {
+            localStorage.setItem('access_token', token);
+            // Redirige a /proyectos
+            this.router.navigate(['/proyectos']);
+          } else {
+            this.registerError = 'No se recibió token del backend';
+          }
         },
         error: (error: any) => {
           this.loading = false;
