@@ -48,7 +48,7 @@ export class ProyectosService {
 
   /** Listar proyectos: intenta backend público; si falla, retorna datos simulados. */
   listar(): Observable<any> {
-  return this.http.get<any>(`${getApiUrl()}/public/proyectos`).pipe(
+  return this.http.get<any>(`${getApiUrl()}/proyectos`).pipe(
       catchError(() => of(this.inMemory).pipe(delay(150)))
     );
   }
